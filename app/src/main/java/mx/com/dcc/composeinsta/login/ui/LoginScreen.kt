@@ -1,7 +1,6 @@
-package mx.com.dcc.composeinsta.login
+package mx.com.dcc.composeinsta.login.ui
 
 import android.app.Activity
-import android.util.Patterns
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

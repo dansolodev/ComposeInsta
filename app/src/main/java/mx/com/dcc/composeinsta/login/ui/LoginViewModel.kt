@@ -1,4 +1,4 @@
-package mx.com.dcc.composeinsta.login
+package mx.com.dcc.composeinsta.login.ui
 
 import android.util.Patterns
 import androidx.lifecycle.LiveData

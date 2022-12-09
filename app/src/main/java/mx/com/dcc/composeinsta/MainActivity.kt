@@ -10,8 +10,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import mx.com.dcc.composeinsta.login.LoginScreen
-import mx.com.dcc.composeinsta.login.LoginViewModel
+import mx.com.dcc.composeinsta.login.ui.LoginScreen
+import mx.com.dcc.composeinsta.login.ui.LoginViewModel
 import mx.com.dcc.composeinsta.ui.theme.ComposeInstaTheme
 
 class MainActivity : ComponentActivity() {
