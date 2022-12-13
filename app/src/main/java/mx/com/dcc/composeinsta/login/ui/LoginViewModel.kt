@@ -1,9 +1,12 @@
 package mx.com.dcc.composeinsta.login.ui
 
+import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import mx.com.dcc.composeinsta.login.domain.LoginUseCase
 
 class LoginViewModel : ViewModel() {
@@ -19,6 +22,9 @@ class LoginViewModel : ViewModel() {
     private val _isLoginEnable = MutableLiveData<Boolean>()
     val isLoginEnable: LiveData<Boolean> get() = _isLoginEnable
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> get() = _isLoading
+
     fun onLoginChange(email: String, password: String) {
         _email.value = email
         _password.value = password
@@ -27,5 +33,19 @@ class LoginViewModel : ViewModel() {
 
     private fun enableLogin(email: String, password: String) =
         Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length > 6
+
+    fun onLoginSelected() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            val result = loginUseCase(email.value ?: "", password.value ?: "")
+            if (result) {
+                // Nav to next screen
+                Log.i("DS", "Result OK")
+            } else {
+
+            }
+            _isLoading.value = false
+        }
+    }
 
 }

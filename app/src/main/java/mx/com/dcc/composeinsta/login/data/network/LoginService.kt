@@ -10,7 +10,7 @@ class LoginService {
 
     suspend fun doLogin(user: String, password: String): Boolean {
         return  withContext(Dispatchers.IO) {
-            val response = mRetrofit.create(LoginClient::class.java).doLogin(user, password)
+            val response = mRetrofit.create(LoginClient::class.java).doLogin()
             response.body()?.success ?: false
         }
     }
