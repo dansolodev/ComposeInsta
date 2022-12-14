@@ -2,15 +2,18 @@ package mx.com.dcc.composeinsta.login.data.network
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import mx.com.dcc.composeinsta.core.network.RetrofitHelper
+import retrofit2.Retrofit
+import javax.inject.Inject
 
-class LoginService {
-
-    private val mRetrofit by lazy { RetrofitHelper.getRetrofit() }
+class LoginService
+@Inject
+constructor(
+    private val loginClient: LoginClient
+) {
 
     suspend fun doLogin(user: String, password: String): Boolean {
         return  withContext(Dispatchers.IO) {
-            val response = mRetrofit.create(LoginClient::class.java).doLogin()
+            val response = loginClient.doLogin()
             response.body()?.success ?: false
         }
     }
